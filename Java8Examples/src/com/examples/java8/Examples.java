@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,6 +21,12 @@ public class Examples {
 
 		Map<String, List<Employee>> map1 = employees.stream().collect(Collectors.groupingBy(Employee::getStream));
 		System.out.println(map1);
+
+		System.out.println(employees.stream().map(e -> e.getAddress()).filter(Objects::nonNull).map(a -> a.getCity())
+				.filter(Objects::nonNull).collect(Collectors.joining(",")));
+
+		System.out.println(
+				employees.stream().map(e -> e.getAddress()).filter(Objects::nonNull).collect(Collectors.toList()));
 
 		System.out.println(String.join(",", map1.keySet()));
 
@@ -105,9 +111,20 @@ public class Examples {
 		System.out.println(unsortMap.entrySet().stream().sorted(Map.Entry.comparingByKey()).collect(Collectors
 				.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldval, newval) -> oldval, LinkedHashMap::new)));
 
+		Predicate<RecoverySystem> s = e -> e.name().equals("COBPREVENTION");
+
+		System.out.println(Arrays.stream(RecoverySystem.values()).anyMatch(s));
+
+		System.out.println("----------------------------------------------------------------");
+		String per = "85%";
+
+		Double d = Double.valueOf(per.replace("%", ""))/100;
+		System.out.println(String.valueOf(d) );
+
 	}
 
 	private static String getRandomChar(int i) {
+
 		return String.valueOf((char) i);
 	}
 
