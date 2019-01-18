@@ -43,6 +43,11 @@ public class Examples {
 				Collectors.groupingBy(Employee::getStream, Collectors.mapping(Employee::getName, Collectors.toSet())));
 		System.out.println(count2);
 
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+		System.out.println(employees.stream().collect(Collectors.toMap(Employee::getId, Employee::getStream)));
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
 		System.out.println(Math.min(Double.MIN_VALUE, 0.0D));
 		// Math.min will compare args which is min
 
@@ -65,6 +70,9 @@ public class Examples {
 		List<String> streams = employees.stream().map(Employee::getStream).collect(Collectors.toList());
 		System.out.println(streams);
 		// To avoid duplicates change it to set
+
+		System.out.println(" ----------------------- ***"
+				+ employees.stream().map(Employee::getName).limit(2).collect(Collectors.toList()));
 
 		System.out.println(streams.stream().map(String::toLowerCase).collect(Collectors.toList()));
 
@@ -118,8 +126,23 @@ public class Examples {
 		System.out.println("----------------------------------------------------------------");
 		String per = "85%";
 
-		Double d = Double.valueOf(per.replace("%", ""))/100;
-		System.out.println(String.valueOf(d) );
+		Double d = Double.valueOf(per.replace("%", "")) / 100;
+		System.out.println(String.valueOf(d));
+
+		System.out.println("----------------------------------------------------------------");
+
+		employees.stream().sorted((o1, o2) -> o2.getId().compareTo(o1.getId())).forEach(System.out::println);
+
+		String stringValue = "2.5";
+		System.out.println("Ceil Value" + String.valueOf(Math.ceil(Double.valueOf(stringValue))));
+		System.out.println("Floor Value" + String.valueOf(Math.floor(Double.valueOf(stringValue))));
+
+		Double doubleValue = Double.valueOf(stringValue);
+		// System.out.println(--doubleValue);
+
+		Double targetVersion = doubleValue % 1 == 0 ? doubleValue + 0.1 : ++doubleValue;
+
+		System.out.println(targetVersion);
 
 	}
 

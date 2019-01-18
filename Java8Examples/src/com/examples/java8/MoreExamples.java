@@ -23,6 +23,8 @@ public class MoreExamples {
 			}
 		});
 
+		
+		System.out.println(names.stream().anyMatch(p));
 	}
 
 }
