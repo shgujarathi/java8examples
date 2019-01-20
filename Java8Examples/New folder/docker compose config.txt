@@ -1,0 +1,26 @@
+version: '3'
+services:
+  config-server:
+    build:
+      context: C:\Users\shgujarathi\Desktop\Spring-POC\spring-config-server
+      dockerfile: Dockerfile
+    image: spring-config-server
+    ports:
+    - 9999:8000
+    networks:
+    - configconnect
+    container_name: spring-config-server
+    
+  config-client:
+    build:
+      context: C:\Users\shgujarathi\Desktop\Spring-POC\spring-config-client
+      dockerfile: Dockerfile
+    image: spring-config-client
+    ports:
+    - 8001:8001
+    networks:
+    - configconnect
+    container_name: spring-config-client
+    
+networks:
+  configconnect:

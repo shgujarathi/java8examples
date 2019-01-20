@@ -1,0 +1,27 @@
+
+	
+	from openjdk:8
+	Add target/jarfilename destination dir and name in dockercontainer
+	Expose portno
+	EntryPoint["java","-jar","nameofjar"]
+	
+	docker build -f(filename) -t(tag) tagname(imagename) .(current dir)
+	
+	docker images (gives images)
+	
+	docker run -p(port/push) port(to be exposed):port(In Image) imagename
+	
+	<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		
+		
+	logging:
+      driver: splunk
+      options:
+        splunk-url: https://localhost:8080
+        splunk-token: 41b73fd5-a62a-4446-b5ef-c099bd813d78
+        splunk-insecureskipverify: 'true'
+		
+		jangalapalli - mulugu
