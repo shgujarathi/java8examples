@@ -50,6 +50,11 @@ public class Examples {
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 		System.out.println(Math.min(Double.MIN_VALUE, 0.0D));
+
+		System.out.println(Math.min(1L, 0.0D));
+		System.out.println(Double.MIN_VALUE);
+		System.out.println(Long.MIN_VALUE);
+
 		// Math.min will compare args which is min
 
 		// IntStream.range(65, 80).boxed().forEach(i -> System.out.println(i + "--->" +
