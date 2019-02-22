@@ -1,10 +1,13 @@
 package com.examples.java8;
 
+import java.security.KeyStore.Entry;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -149,6 +152,36 @@ public class Examples {
 		Double targetVersion = doubleValue % 1 == 0 ? doubleValue + 0.1 : ++doubleValue;
 
 		System.out.println(targetVersion);
+
+		String sss = "shashanka";
+		Map<Character, Integer> map = new HashMap<>();
+		for (int i = 0; i < sss.length(); i++) {
+			char c = sss.charAt(i);
+			if (map.containsKey(c)) {
+				int cnt = map.get(c);
+				map.put(c, ++cnt);
+			} else {
+				map.put(c, 1);
+			}
+		}
+
+		System.out.println(Collections.max(map.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey());
+		System.out.println(
+				map.entrySet().stream().filter(i -> i.getValue() == Collections.max(map.values())).findFirst());
+
+		System.out.println(map);
+
+		List<String> l = new LinkedList<>();
+		List<String> r = new LinkedList<>();
+		l.add("1");
+		l.add("2");
+		for (int i = l.size()-1; i >= 0; i--) {
+			r.add(l.get(i));
+		}
+
+		System.out.println(r);
+
+		System.out.println(l.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList()));
 
 	}
 
