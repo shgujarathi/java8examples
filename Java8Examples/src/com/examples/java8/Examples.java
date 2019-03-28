@@ -182,6 +182,10 @@ public class Examples {
 		System.out.println(r);
 
 		System.out.println(l.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList()));
+		
+		String k = String.valueOf(1+3);
+		String k1 = "1"+"2";
+		System.out.println(k + "" + k1);
 
 	}
 
